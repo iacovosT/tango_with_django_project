@@ -4,7 +4,7 @@ Created on Fri Jan 28 18:12:40 2022
 
 @author: Iacovos
 """
-
+import random
 import os
 os.environ.setdefault('DJANGO_SETTINGS_MODULE',
                       'tango_with_django_project.settings')
@@ -52,7 +52,7 @@ def populate():
 def add_page(cat, title, url, views=0):
     p = Page.objects.get_or_create(category=cat, title=title)[0]
     p.url=url
-    p.views=views
+    p.views=views+random.randint(1, 30)
     p.save()
     return p
     
